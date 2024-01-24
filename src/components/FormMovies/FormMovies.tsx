@@ -1,10 +1,7 @@
 import React, { FC, useState } from "react";
+import { IProps } from "./FormMovies.types";
 
-interface Props {
-  handleFormSubmit: (query: string) => void;
-}
-
-const FormMovies: FC<Props> = ({ handleFormSubmit }) => {
+const FormMovies: FC<IProps> = ({ handleFormSubmit }) => {
   const [query, setQuery] = useState("");
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {

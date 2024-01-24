@@ -1,17 +1,12 @@
 import { getTrendingMovies } from "@/helpers/api";
 import { FC } from "react";
-import { Link, useLocation } from "react-router-dom";
 
-import { ROUTES } from "@/constants/routes/routes.constants";
 import { ErrorElement } from "@/components/Error/Error";
 import { useRequest } from "@/hooks/useRequest";
 import { Response } from "./Home.types";
-
-const { MOVIES, HOME } = ROUTES;
+import MoviesList from "@/components/MoviesList/MoviesList";
 
 const Home: FC = () => {
-  const location = useLocation();
-
   const {
     data: trendingMovies,
     isLoading,
@@ -27,20 +22,7 @@ const Home: FC = () => {
 
   return (
     <div>
-      <ul>
-        {trendingMovies?.results.map(({ id, title }) => {
-          return (
-            <li key={id}>
-              <Link
-                to={`${MOVIES}/${String(id)}`}
-                state={location || `/${HOME}`}
-              >
-                {title}
-              </Link>
-            </li>
-          );
-        })}
-      </ul>
+      <MoviesList data={trendingMovies?.results ?? []} />
     </div>
   );
 };

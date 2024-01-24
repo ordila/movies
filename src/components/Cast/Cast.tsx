@@ -3,6 +3,7 @@ import { useRequest } from "@/hooks/useRequest";
 import { useParams } from "react-router-dom";
 import { Movie } from "./Cast.types";
 import { ErrorElement } from "../Error/Error";
+import { DEFAULT_PHOTO } from "@/constants/photo/defaultPhoto";
 
 const Cast = () => {
   const { id } = useParams();
@@ -19,7 +20,12 @@ const Cast = () => {
       {data?.cast.map((el) => (
         <div key={el.id}>
           <img
-            src={`https://image.tmdb.org/t/p/w300/${el.profile_path}`}
+            src={
+              el.profile_path
+                ? `https://image.tmdb.org/t/p/w300/${el.profile_path}`
+                : DEFAULT_PHOTO
+            }
+            width={300}
             alt={el.name}
           />
           <h2>{el.name}</h2>

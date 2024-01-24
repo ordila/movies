@@ -5,8 +5,9 @@ import { Link, useLocation, useSearchParams } from "react-router-dom";
 import { IMovies } from "../Home/Home.types";
 import { ROUTES } from "@/constants/routes/routes.constants";
 import { ErrorElement } from "@/components/Error/Error";
+import MoviesList from "@/components/MoviesList/MoviesList";
 
-const { HOME } = ROUTES;
+const { INDEX } = ROUTES;
 
 const Movies = () => {
   const [data, setData] = useState<IMovies[]>();
@@ -51,15 +52,7 @@ const Movies = () => {
     <div>
       <FormMovies handleFormSubmit={handleFormSubmit} />
 
-      {data?.map((el) => {
-        return (
-          <li key={el.id}>
-            <Link to={String(el.id)} state={location || `/${HOME}`}>
-              {el.title}
-            </Link>
-          </li>
-        );
-      })}
+      <MoviesList data={data || []} />
     </div>
   );
 };

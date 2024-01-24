@@ -5,7 +5,7 @@ import { ErrorElement } from "../Error/Error";
 import { MovieDetails } from "./MoviesDetais.types";
 import { ROUTES } from "@/constants/routes/routes.constants";
 import { useRequest } from "@/hooks/useRequest";
-const { HOME, CAST, REVIEWS } = ROUTES;
+const { INDEX, CAST, REVIEWS } = ROUTES;
 
 const MoviesDetails = () => {
   const { id } = useParams();
@@ -28,7 +28,7 @@ const MoviesDetails = () => {
   }
   return (
     <div>
-      <Link to={previousLocation.current || `/${HOME}`}>Back</Link>
+      <Link to={previousLocation.current || `/${INDEX}`}>Back</Link>
       <div>
         <div>
           {details?.poster_path && (

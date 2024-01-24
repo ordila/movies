@@ -15,12 +15,12 @@ const MoviesDetails = lazy(
   () => import("@/components/MoviesDetails/MoviesDetails")
 );
 
-const { HOME, MOVIES, MOVIES_DETAILS, CAST, REVIEWS } = ROUTES;
+const { INDEX, MOVIES, MOVIES_DETAILS, CAST, REVIEWS } = ROUTES;
 export const AppRouter: FC = () => {
   return (
     <div>
       <Routes>
-        <Route path={HOME} element={<WrapperHeader />}>
+        <Route path={INDEX} element={<WrapperHeader />}>
           <Route index element={<Home />} />
           <Route path={MOVIES} element={<Movies />} />
           <Route path={MOVIES_DETAILS} element={<MoviesDetails />}>
